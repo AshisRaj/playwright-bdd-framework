@@ -1,0 +1,21 @@
+{
+  "plugins": ["prettier-plugin-gherkin"],
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "always",
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": "package*.json",
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}

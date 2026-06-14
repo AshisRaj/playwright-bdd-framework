@@ -1,0 +1,84 @@
+{
+  "no-trailing-spaces": "on",
+  "indentation": [
+    "on",
+    {
+      "Feature": 0,
+      "Background": 0,
+      "Scenario": 2,
+      "Step": 4,
+      "Examples": 4,
+      "example": 6,
+      "given": 4,
+      "when": 4,
+      "then": 4,
+      "and": 4,
+      "but": 4,
+      "feature tag": 0,
+      "scenario tag": 2
+    }
+  ],
+  "allowed-tags": [
+    "on",
+    {
+      "tags": [
+        "@watch",
+        "@wip"
+      ],
+      "patterns": [
+        "^@todo$"
+      ]
+    }
+  ],
+  "no-unnamed-features": "on",
+  "no-dupe-feature-names": "on",
+  "file-name": [
+    "on",
+    {
+      "style": "PascalCase"
+    }
+  ],
+  "new-line-at-eof": [
+    "on",
+    "yes"
+  ],
+  "no-dupe-scenario-names": [
+    "on",
+    "anywhere"
+  ],
+  "scenario-size": [
+    "on",
+    {
+      "steps-length": {
+        "Background": 15,
+        "Scenario": 15
+      }
+    }
+  ],
+  "name-length": [
+    "on",
+    {
+      "Feature": 70,
+      "Scenario": 70,
+      "Step": 70
+    }
+  ],
+  "required-tags": [
+    "off",
+    {
+      "tags": [
+        "^@issue:[1-9]\\d*$"
+      ],
+      "ignoreUntagged": false
+    }
+  ],
+  "no-background-only-scenario": "on",
+  "use-and": "on",
+  "max-scenarios-per-file": [
+    "on",
+    {
+      "maxScenarios": 10,
+      "countOutlineExamples": true
+    }
+  ]
+}

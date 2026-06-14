@@ -1,0 +1,64 @@
+.DS_Store
+.env
+allure-results
+allure-report
+playwright-report
+trace.zip
+*.log
+
+# editor
+.idea/
+# .vscode/
+dist/
+
+
+
+# npm
+node_modules
+npm-debug.log
+
+
+
+# Playwright
+node_modules/
+/test-results/
+/playwright/.cache/
+/artifacts/*
+!artifacts/temp
+artifacts/temp/*
+!artifacts/temp/.keep
+!artifacts/downloads
+artifacts/downloads/*
+!artifacts/downloads/.keep
+!artifacts/logs
+artifacts/logs/*
+!artifacts/logs/.keep
+!artifacts/reports
+artifacts/reports/*
+!artifacts/reports/.keep
+!artifacts/cookies
+artifacts/cookies/*
+!artifacts/cookies/.keep
+
+
+
+
+# yarn
+.pnp.*
+.yarn
+
+# env
+.env
+
+# tests
+test-results
+playwright-report
+cucumber-report
+**/.features-gen/**/*.spec.js
+
+.nx
+
+build-archive.log
+/browserstack.yml
+/log
+/allure-results
