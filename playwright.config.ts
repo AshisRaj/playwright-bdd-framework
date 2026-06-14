@@ -74,7 +74,7 @@ interface MonocartSummary {
 const reporter: ReporterDescription[] = [
   [
     // Custom HTML Reporter with enhanced features like screenshots, videos, and metadata display
-    path.join(PROJECT_ROOT, 'src', 'utils', 'CustomTTAReporter.ts'),
+    require.resolve('./src/utils/CustomTTAReporter.ts'),
     {
       outputFile: path.join(
         PROJECT_ROOT,

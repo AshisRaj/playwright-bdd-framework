@@ -1,3 +1,4 @@
+import { PROJECT_ROOT } from '@utils';
 import path from 'path';
 import { FrameworkConfig } from './types';
 
@@ -9,7 +10,7 @@ const defaultConfig: FrameworkConfig = {
   timeout: 90000,
   expectTimeout: 10000,
   reporter: 'allure',
-  reportDir: path.join(process.cwd(), 'artifacts', 'reports'),
+  reportDir: path.join(PROJECT_ROOT, 'artifacts', 'reports'),
   projects: [
     {
       name: 'chromium',
