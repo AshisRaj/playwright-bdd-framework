@@ -232,7 +232,7 @@ export default defineConfig({
 
   fullyParallel: cfg.fullyParallel,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : (cfg.retries ?? 0),
+  retries: process.env.CI ? 0 : (cfg.retries ?? 0),
   workers: process.env.CI ? 1 : cfg.workers, // Use a single worker in CI to avoid potential issues with parallel execution
 
   // Provide top-level metadata for Playwright

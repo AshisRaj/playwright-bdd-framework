@@ -98,23 +98,25 @@ const openHtmlReport = () => {
 
 // --- 2️⃣ Open report based on reporter ---
 
-logger.info(`Default Reporter: ${process.env}`);
+if (process.env.OPEN_TEST_REPORT === 'true') {
+  logger.info(`Default Reporter: ${process.env}`);
 
-const reporter = String(
-  opts.reporter || (process.env.DEFAULT_REPORTER ?? 'monocart'),
-).toLowerCase();
-switch (reporter) {
-  case 'monocart':
-    openMonocartReport();
-    break;
-  case 'allure':
-    openAllureReport();
-    break;
-  case 'html':
-    openHtmlReport();
-    break;
-  default:
-    logger.warn(`Unknown reporter: ${reporter}. TTA Report will be opened.`);
-    run(`npm run report:open:tta`);
-    break;
+  const reporter = String(
+    opts.reporter || (process.env.DEFAULT_REPORTER ?? 'monocart'),
+  ).toLowerCase();
+  switch (reporter) {
+    case 'monocart':
+      openMonocartReport();
+      break;
+    case 'allure':
+      openAllureReport();
+      break;
+    case 'html':
+      openHtmlReport();
+      break;
+    default:
+      logger.warn(`Unknown reporter: ${reporter}. TTA Report will be opened.`);
+      run(`npm run report:open:tta`);
+      break;
+  }
 }
