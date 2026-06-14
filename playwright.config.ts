@@ -272,4 +272,9 @@ export default defineConfig({
       metadata: reportMetaData,
     })),
   ],
+  webServer: {
+    command: 'npm start',
+    reuseExistingServer: !process.env.CI,
+    timeout: 120 * 1000,
+  },
 });
