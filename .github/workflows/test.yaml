@@ -13,7 +13,7 @@ jobs:
           node-version: 25
       - run: npm ci
       - run: npx playwright install --with-deps
-      - run: npm test
+      - run: npm run run
       - uses: actions/upload-artifact@v4
         if: always()
         with:
