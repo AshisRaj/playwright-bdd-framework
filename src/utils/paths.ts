@@ -5,7 +5,7 @@ import path from 'path';
 // Directory of this file
 export const FILE_ROOT = path.dirname(__filename);
 // Root of the project
-export const PROJECT_ROOT = path.join(FILE_ROOT, '..', '..');
+export const PROJECT_ROOT = path.resolve(FILE_ROOT, '../..');
 
 // Artifacts and report paths
 export const ARTIFACTS_DIR = path.join(PROJECT_ROOT, 'artifacts');
