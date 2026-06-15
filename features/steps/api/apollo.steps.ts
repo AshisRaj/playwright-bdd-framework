@@ -1,4 +1,4 @@
-import { When, Then, expect } from '@fixtures';
+import { Then, When, expect } from '@fixtures';
 import { logger } from '@utils';
 
 let launchesResult: any = null;
@@ -20,22 +20,22 @@ Then('the launches list should have at least {int} item', async ({}, expected: n
 
 When('I save the first launch id', async ({}) => {
   if (!launchesResult) throw new Error('No launches result available to save id from');
-    // Support both shapes: { launches: [...] } or an array directly
-    const arr = Array.isArray(launchesResult.launches)
-      ? launchesResult.launches
-      : Array.isArray(launchesResult)
+  // Support both shapes: { launches: [...] } or an array directly
+  const arr = Array.isArray(launchesResult.launches)
+    ? launchesResult.launches
+    : Array.isArray(launchesResult)
       ? launchesResult
       : // maybe nested under `launches.launches`
-        launchesResult.launches?.launches ?? null;
+        (launchesResult.launches?.launches ?? null);
 
-    if (!arr || arr.length === 0) {
-      throw new Error(`No launches found in result: ${JSON.stringify(launchesResult)}`);
-    }
+  if (!arr || arr.length === 0) {
+    throw new Error(`No launches found in result: ${JSON.stringify(launchesResult)}`);
+  }
   // Debug output to help diagnose shape issues during test runs
-   
-  logger.log('launchesResult (debug):', JSON.stringify(launchesResult, null, 2));
-   
-  logger.log('chosen launch object (debug):', JSON.stringify(arr[0], null, 2));
+
+  logger.info(`launchesResult (debug): ${JSON.stringify(launchesResult, null, 2)}`);
+
+  logger.info(`chosen launch object (debug): ${JSON.stringify(arr[0], null, 2)}`);
   savedLaunchId = arr[0].id;
 });
 
@@ -54,14 +54,13 @@ Then('the launch mission name should be defined', async ({}) => {
 
 When('I book trip for saved launch', async ({ apolloClient }) => {
   if (!savedLaunchId) throw new Error('No saved launch id');
-   
-  logger.log('booking with id (debug):', savedLaunchId);
+
+  logger.info(`booking with id (debug): ${savedLaunchId}`);
   try {
     bookingResult = await apolloClient.bookTrips([savedLaunchId]);
   } catch (err) {
-     
     logger.error('bookTrips threw error:', err);
-     
+
     logger.error('booking payload was:', JSON.stringify([savedLaunchId]));
     throw err;
   }
@@ -77,12 +76,15 @@ When('I login with email {string}', async ({ apolloClient }, email: string) => {
   loginResult = await apolloClient.login(email);
 });
 
-Then('the login result should contain id and token and email {string}', async ({}, email: string) => {
-  expect(loginResult).toBeDefined();
-  expect(loginResult.id).toBeDefined();
-  expect(loginResult.token).toBeDefined();
-  expect(loginResult.email).toBe(email);
-});
+Then(
+  'the login result should contain id and token and email {string}',
+  async ({}, email: string) => {
+    expect(loginResult).toBeDefined();
+    expect(loginResult.id).toBeDefined();
+    expect(loginResult.token).toBeDefined();
+    expect(loginResult.email).toBe(email);
+  },
+);
 
 When('I cancel booked trip for saved launch', async ({ apolloClient }) => {
   if (!savedLaunchId) throw new Error('No saved launch id');

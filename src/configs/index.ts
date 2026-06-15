@@ -23,3 +23,5 @@ export function getConfig(env: string): FrameworkConfig {
 }
 
 export default getConfig;
+
+export * from './types';

@@ -21,7 +21,7 @@ jobs:
         with:
           name: playwright-artifacts
           path: |
-            artifacts/cucumber-report/
             artifacts/reports/html-reports/
+            artifacts/reports/tta-report/
           retention-days: 1
           if-no-files-found: ignore

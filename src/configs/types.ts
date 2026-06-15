@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export type ReporterKind = 'allure' | 'monocart' | 'html' | 'list' | string;
+
+import { ReporterDescription } from '@playwright/test';
 
 export interface ProjectConfig {
   name: string;
@@ -22,7 +23,7 @@ export interface FrameworkConfig {
   // expect timeout in ms
   expectTimeout: number;
   // reporter selection
-  reporter: ReporterKind;
+  reporter: ReporterDescription[];
   // directory for reporter results
   reportDir: string;
   // projects (browsers) config
@@ -38,4 +39,30 @@ export interface FrameworkConfig {
   retries?: number;
   workers?: number | undefined;
   use?: Record<string, any>; // for Playwright's `use` option
+}
+
+// Define the MonocartSummary interface
+export interface MonocartSummary {
+  name: string;
+  dateH: string;
+  durationH: string;
+  cwd: string;
+  outputFile: string;
+  outputDir: string;
+  system: {
+    arch: string;
+    platform: string;
+    release: string;
+    type: string;
+    version: string;
+    hostname: string;
+    node: string;
+    playwright: string;
+    testDir: string;
+    outputFile: string;
+    outputDir: string;
+  };
+  htmlPath: string;
+  jsonPath: string;
+  summaryTable: any;
 }
